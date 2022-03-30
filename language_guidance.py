@@ -232,6 +232,7 @@ def reembed_in_language(language_model, reassigns_topk, device):
     print('Getting language embeddings...')
     unique_labs = {key: None for key in np.unique(reassigns_topk)}
     reembed_collect = []
+    _ = language_model.eval()
     with torch.no_grad():
         language_embeds = language_model(list(unique_labs.keys()), device,
                                          False).cpu()
