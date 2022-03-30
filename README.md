@@ -1,4 +1,5 @@
 # Language Guidance for Vision-based Deep Metric Learning
+### CVPR 2022 ___Oral___
 #### ___Contact___: Karsten Roth (karsten.rh1@gmail.com)
 
 ---
