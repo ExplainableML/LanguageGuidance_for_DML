@@ -64,7 +64,7 @@ class Criterion(torch.nn.Module):
         # Initialize all target criteria. As each criterion may require its
         # separate set of trainable parameters, several instances have to be created.
         old_embed_dim = copy.deepcopy(opt.embed_dim)
-        self.target_criteria = nn.ModuleList()
+        self.target_criteria = torch.nn.ModuleList()
         for t_dim in opt.loss_s2sd_target_dims:
             opt.embed_dim = t_dim
 
@@ -127,8 +127,8 @@ class Criterion(torch.nn.Module):
         # If required, use combined global max- and average pooling to produce
         # the feature space.
         if self.pool_aggr:
-            avg_batch_features = nn.AdaptiveAvgPool2d(1)(batch_features).view(
-                bs, -1) + nn.AdaptiveMaxPool2d(1)(batch_features).view(bs, -1)
+            avg_batch_features = torch.nn.AdaptiveAvgPool2d(1)(batch_features).view(
+                bs, -1) + torch.nn.AdaptiveMaxPool2d(1)(batch_features).view(bs, -1)
         else:
             avg_batch_features = avg_batch_features.view(bs, -1)
 
